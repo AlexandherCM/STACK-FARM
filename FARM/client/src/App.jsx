@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
-        <Route path="/Tarea/Lista" element={<TaskForms/>}/>
+        <Route path="/Crear/Tarea" element={<TaskForms/>}/>
       </Routes>
     </BrowserRouter>
   )
