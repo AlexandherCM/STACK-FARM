@@ -23,7 +23,6 @@ async def ObtenerUnaTarea_ID(id):
             return False
     except:
         return False
-    
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 async def ObtenerUnaTarea_titulo(titulo):
     tarea = await collection.find_one({'Titulo':titulo})

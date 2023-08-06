@@ -14,6 +14,10 @@ async def obtener_tareas():
 @AppTarea.post('/api/tareas', response_model=MiTareaDTO)
 async def crear_tarea(task: MiTarea):
     TareaEncontrada = await ObtenerUnaTarea_titulo(task.Titulo)
+
+    if task.Titulo == '':
+        raise HTTPException(status_code=400, detail='El titulo no puede estar vacio :(')
+
     if TareaEncontrada:
         raise HTTPException(409, 'La tarea ya existe >:(')
 
@@ -33,6 +37,9 @@ async def obtener_tarea(id: str):
 # UPDATE - - - - - - - - - - - - - - - - - - - - - - - - 
 @AppTarea.put('/api/tareas/{id}', response_model=MiTareaDTO)
 async def actualizar_tarea(id: str, tarea: ActualizarTarea):
+    if tarea.Titulo == '':
+        raise HTTPException(status_code=400, detail='El titulo no puede estar vacio :(')
+
     respuesta = await ActualizarUnaTarea(id, tarea)
     if respuesta:
         return respuesta
